@@ -14,13 +14,109 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bookings: {
+        Row: {
+          code: string
+          created_at: string
+          date: string
+          guest_name: string
+          id: string
+          persons: number
+          room: string | null
+          status: string
+          time: string
+          type: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          date: string
+          guest_name: string
+          id?: string
+          persons: number
+          room?: string | null
+          status?: string
+          time: string
+          type: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          date?: string
+          guest_name?: string
+          id?: string
+          persons?: number
+          room?: string | null
+          status?: string
+          time?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      fault_reports: {
+        Row: {
+          category: string
+          created_at: string
+          description: string
+          guest_name: string
+          id: string
+          image_path: string | null
+          location: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description: string
+          guest_name: string
+          id?: string
+          image_path?: string | null
+          location: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string
+          guest_name?: string
+          id?: string
+          image_path?: string | null
+          location?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      create_booking: {
+        Args: {
+          _code: string
+          _date: string
+          _guest_name: string
+          _persons: number
+          _room: string
+          _time: string
+          _type: string
+        }
+        Returns: {
+          code: string
+          created_at: string
+          date: string
+          guest_name: string
+          id: string
+          persons: number
+          room: string | null
+          status: string
+          time: string
+          type: string
+        }
+        SetofOptions: {
+          from: "*"
+          to: "bookings"
+          isOneToOne: true
+          isSetofReturn: false
+        }
+      }
     }
     Enums: {
       [_ in never]: never
