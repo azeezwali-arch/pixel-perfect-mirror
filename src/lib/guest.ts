@@ -19,7 +19,8 @@ export function useGuestName() {
   return name;
 }
 
-export function toISO(d: Date) {
+export function toISO(d: Date | undefined = undefined) {
+  d ??= new Date();
   const y = d.getFullYear();
   const m = String(d.getMonth() + 1).padStart(2, "0");
   const day = String(d.getDate()).padStart(2, "0");
@@ -34,7 +35,7 @@ export function nextDays(n: number) {
 }
 
 export function formatDay(iso: string) {
-  const [y, m, d] = iso.split("-").map(Number);
+  const [y = 0, m = 1, d = 1] = iso.split("-").map(Number);
   return new Date(y, m - 1, d).toLocaleDateString("sv-SE", { weekday: "long", day: "numeric", month: "long" });
 }
 

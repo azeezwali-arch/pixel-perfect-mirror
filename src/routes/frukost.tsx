@@ -67,12 +67,12 @@ function Frukost() {
 
   const confirm = async () => {
     if (!slot || !name) return;
-    if (persons > left) return toast.error("Det finns inte plats för så många.");
+    if (persons > left) return void toast.error("Det finns inte plats för så många.");
     setBusy(true);
     const res = await book({ data: { type: "frukost", date, time: slot.time, room: slot.room, persons, guestName: name } });
     setBusy(false);
     await qc.invalidateQueries({ queryKey: ["avail"] });
-    if (!res.ok) return toast.error(res.error);
+    if (!res.ok) return void toast.error(res.error);
     setDone({ code: res.code, lines: [formatDay(date), `${slot.time}, ${slot.room}`, `${persons} ${persons === 1 ? "person" : "personer"}`] });
   };
 

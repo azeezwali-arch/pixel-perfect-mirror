@@ -43,8 +43,8 @@ function Fel() {
     const file = fd.get("image") as File | null;
     let image: { base64: string; type: "image/jpeg" | "image/png" | "image/webp" } | null = null;
     if (file && file.size > 0) {
-      if (file.size > 5 * 1024 * 1024) return toast.error("Bilden får vara max 5 MB.");
-      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) return toast.error("Använd JPG, PNG eller WebP.");
+      if (file.size > 5 * 1024 * 1024) return void toast.error("Bilden får vara max 5 MB.");
+      if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) return void toast.error("Använd JPG, PNG eller WebP.");
       image = { base64: await toB64(file), type: file.type as "image/jpeg" };
     }
     setBusy(true);

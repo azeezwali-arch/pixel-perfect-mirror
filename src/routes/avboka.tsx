@@ -47,7 +47,7 @@ function Avboka() {
 
   const doCancel = async (b: B) => {
     const r = await cancel({ data: { id: b.id, guestName: name.trim() } });
-    if (!r.ok) return toast.error("Avbokningen misslyckades.");
+    if (!r.ok) return void toast.error("Avbokningen misslyckades.");
     setItems((x) => x?.filter((i) => i.id !== b.id) ?? null);
     await qc.invalidateQueries({ queryKey: ["avail"] });
     setMsg(`Din bokning är avbokad, ${name.trim()}.`);
