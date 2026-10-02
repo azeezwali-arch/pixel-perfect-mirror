@@ -10,33 +10,128 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvbokaRouteImport } from './routes/avboka'
+import { Route as BastuRouteImport } from './routes/bastu'
+import { Route as CookiesRouteImport } from './routes/cookies'
+import { Route as DatasakerhetRouteImport } from './routes/datasakerhet'
+import { Route as DriftsakerhetRouteImport } from './routes/driftsakerhet'
+import { Route as FelRouteImport } from './routes/fel'
+import { Route as FrukostRouteImport } from './routes/frukost'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvbokaRoute = AvbokaRouteImport.update({
+  id: '/avboka',
+  path: '/avboka',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BastuRoute = BastuRouteImport.update({
+  id: '/bastu',
+  path: '/bastu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiesRoute = CookiesRouteImport.update({
+  id: '/cookies',
+  path: '/cookies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DatasakerhetRoute = DatasakerhetRouteImport.update({
+  id: '/datasakerhet',
+  path: '/datasakerhet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DriftsakerhetRoute = DriftsakerhetRouteImport.update({
+  id: '/driftsakerhet',
+  path: '/driftsakerhet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FelRoute = FelRouteImport.update({
+  id: '/fel',
+  path: '/fel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FrukostRoute = FrukostRouteImport.update({
+  id: '/frukost',
+  path: '/frukost',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avboka': typeof AvbokaRoute
+  '/bastu': typeof BastuRoute
+  '/cookies': typeof CookiesRoute
+  '/datasakerhet': typeof DatasakerhetRoute
+  '/driftsakerhet': typeof DriftsakerhetRoute
+  '/fel': typeof FelRoute
+  '/frukost': typeof FrukostRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avboka': typeof AvbokaRoute
+  '/bastu': typeof BastuRoute
+  '/cookies': typeof CookiesRoute
+  '/datasakerhet': typeof DatasakerhetRoute
+  '/driftsakerhet': typeof DriftsakerhetRoute
+  '/fel': typeof FelRoute
+  '/frukost': typeof FrukostRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avboka': typeof AvbokaRoute
+  '/bastu': typeof BastuRoute
+  '/cookies': typeof CookiesRoute
+  '/datasakerhet': typeof DatasakerhetRoute
+  '/driftsakerhet': typeof DriftsakerhetRoute
+  '/fel': typeof FelRoute
+  '/frukost': typeof FrukostRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/avboka'
+    | '/bastu'
+    | '/cookies'
+    | '/datasakerhet'
+    | '/driftsakerhet'
+    | '/fel'
+    | '/frukost'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/avboka'
+    | '/bastu'
+    | '/cookies'
+    | '/datasakerhet'
+    | '/driftsakerhet'
+    | '/fel'
+    | '/frukost'
+  id:
+    | '__root__'
+    | '/'
+    | '/avboka'
+    | '/bastu'
+    | '/cookies'
+    | '/datasakerhet'
+    | '/driftsakerhet'
+    | '/fel'
+    | '/frukost'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvbokaRoute: typeof AvbokaRoute
+  BastuRoute: typeof BastuRoute
+  CookiesRoute: typeof CookiesRoute
+  DatasakerhetRoute: typeof DatasakerhetRoute
+  DriftsakerhetRoute: typeof DriftsakerhetRoute
+  FelRoute: typeof FelRoute
+  FrukostRoute: typeof FrukostRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +143,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/avboka': {
+      id: '/avboka'
+      path: '/avboka'
+      fullPath: '/avboka'
+      preLoaderRoute: typeof AvbokaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bastu': {
+      id: '/bastu'
+      path: '/bastu'
+      fullPath: '/bastu'
+      preLoaderRoute: typeof BastuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookies': {
+      id: '/cookies'
+      path: '/cookies'
+      fullPath: '/cookies'
+      preLoaderRoute: typeof CookiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/datasakerhet': {
+      id: '/datasakerhet'
+      path: '/datasakerhet'
+      fullPath: '/datasakerhet'
+      preLoaderRoute: typeof DatasakerhetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/driftsakerhet': {
+      id: '/driftsakerhet'
+      path: '/driftsakerhet'
+      fullPath: '/driftsakerhet'
+      preLoaderRoute: typeof DriftsakerhetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fel': {
+      id: '/fel'
+      path: '/fel'
+      fullPath: '/fel'
+      preLoaderRoute: typeof FelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/frukost': {
+      id: '/frukost'
+      path: '/frukost'
+      fullPath: '/frukost'
+      preLoaderRoute: typeof FrukostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvbokaRoute: AvbokaRoute,
+  BastuRoute: BastuRoute,
+  CookiesRoute: CookiesRoute,
+  DatasakerhetRoute: DatasakerhetRoute,
+  DriftsakerhetRoute: DriftsakerhetRoute,
+  FelRoute: FelRoute,
+  FrukostRoute: FrukostRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
